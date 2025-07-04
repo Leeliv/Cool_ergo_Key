@@ -1,0 +1,25 @@
+units:
+
+ # Proxy variables
+ kx: cx
+ ky: cy
+
+ # Padding variables
+ px: kx + 2
+ py: ky + 2
+
+points:
+ zones:
+  le_board:
+   columns:
+    outer:
+    pinky:
+    ring:
+    middle:
+    index:
+    inner:
+   rows:
+    one: 
+    two:
+    three:
+    four:
