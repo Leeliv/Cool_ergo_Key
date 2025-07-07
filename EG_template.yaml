@@ -1,3 +1,6 @@
+meta:
+  engine: 4.1.0
+
 units:
 
  # Proxy variables
@@ -10,16 +13,96 @@ units:
 
 points:
  zones:
-  le_board:
+  leboard:
+   key:
+    padding: 1.2ky
+    spread: 1.2kx
    columns:
     outer:
+     rows.five.skip: true
     pinky:
+     rows.five.skip: true
     ring:
+     key:
+      stagger: 5
     middle:
+     key:
+      stagger: 2.5
     index:
+     key:
+      stagger: -5 
     inner:
+     rows.five.skip: true
+     key:
+      stagger: -2.5
    rows:
-    one: 
-    two:
-    three:
+    five: 
     four:
+    three:
+    two:
+    one:
+
+  thumb:
+   key: 
+    padding: 1ky
+    spread: 1.2kx
+   anchor:
+    ref: leboard_inner_five
+   columns:
+    some:
+     key:
+      splay: -15
+      shift: [2, -2]
+    space:
+     key:
+      width: 1.5kx
+      splay: 75
+      shift: [2, -2]
+   rows:
+    cluster:
+    
+outlines:
+ keys:
+  - what: rectangle
+    where: true
+    size: [kx, ky]
+
+ TheWall:
+  - what: rectangle
+    where: true
+    size: [px + 3, py+2]
+
+  - what: polygon
+    operation: add
+    points:
+     - ref: leboard_inner_one
+       shift: [2px,0]
+     - ref: leboard_inner_one
+     - ref: leboard_ring_five
+       shift: [-0.5px, -0.5py]
+     - ref: thumb_space_cluster
+       shift: [-0.5px, -1.3py]
+    fillet: 2
+
+cases:
+ testcase:
+  - what: outline
+    name: TheWall
+    extrude: 1
+
+pcbs:
+ basic:
+  template: kicad8
+  outlines:
+   main:
+    outline: TheWall
+  footprints:
+   choc_hotswap:
+    what: choc
+    where: true
+    params:
+     keycaps: true
+     reverse: true
+     hotswap: true
+     from: "{{column_net}}"
+     to: "{{colrow}}"
