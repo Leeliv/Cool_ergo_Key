@@ -41,6 +41,8 @@ points:
     three:
     two:
     one:
+   anchor:
+    shift: [100, -200]
 
   thumb:
    key: 
@@ -92,7 +94,6 @@ cases:
 
 pcbs:
  basic:
-  template: kicad8
   outlines:
    main:
     outline: TheWall
@@ -106,3 +107,25 @@ pcbs:
      hotswap: true
      from: "{{column_net}}"
      to: "{{colrow}}"
+   diodes:
+    what: diode
+    where: true
+    params:
+     from: "{{colrow}}"
+     to: "{{row_net}}"
+    adjust:
+     shift: [0, -5]
+   trrs:
+    what: trrs
+    params: 
+     reverse: true
+     symmetric: true
+     A: "o"
+     B: "D"
+     C: "F"
+     D: "A"
+    where:
+     ref: leboard_inner_four
+    adjust:
+     shift: [2.1kx, -0.5kx]
+     rotate: -90
